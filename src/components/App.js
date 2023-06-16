@@ -6,6 +6,12 @@ import QuestionList from "./QuestionList";
 function App() {
   const [page, setPage] = useState("List");
 
+  // //me making a function to handle when new question form is submitted
+  // function handleAddQuestion(newQuestion) {
+  //   setQuestions([...questions, newQuestion]);
+  //   console.log(newQuestion);
+  // }
+
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
