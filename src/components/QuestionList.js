@@ -4,6 +4,7 @@ import QuestionForm from "./QuestionForm";
 
 function QuestionList() {
   const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]); //I set this up
 
   useEffect(() => {
     fetch("http://localhost:4000/questions")
@@ -18,8 +19,15 @@ function QuestionList() {
     console.log(newQuestion);
   }
 
-function handleUpdatedAnswer() {
-  
+  //me creating a function to handle change of answer
+function handleUpdatedAnswer(updatedAnswer) {
+  const updatedAnswers = answers.map((answer, index) => {
+    if (answer.index === updatedAnswers.index) {
+      return updatedAnswer;
+    }else {
+      return answer;
+    }
+  })
 }
 
   //me making a function to handle delete. it is then send as a prop
