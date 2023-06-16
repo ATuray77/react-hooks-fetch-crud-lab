@@ -11,38 +11,38 @@ function QuestionList() {
       .then((r) => r.json())
       .then((questions) => setQuestions(questions));
   }, []);
-  console.log(questions);
+  //console.log(questions);
 
   //me making a function to handle when new question form is submitted
-  function handleAddQuestion(newQuestion) {
-    setQuestions([...questions, newQuestion]);
-    console.log(newQuestion);
+  function handleAddQuestion(addedQuestion) {
+    setQuestions([...questions, addedQuestion]);
+    console.log(addedQuestion);
   }
 
-  //me creating a function to handle change of answer
-function handleUpdatedAnswer(updatedAnswer) {
-  const updatedAnswers = answers.map((answer, index) => {
-    if (answer.index === updatedAnswers.index) {
-      return updatedAnswer;
-    }else {
-      return answer;
-    }
-  })
-}
+  //me creating a function to handle change of answer: PATCH
+  function handleUpdatedAnswer(updatedAnswer) {
+    const updatedAnswers = answers.map((answer, index) => {
+      if (answer.index === updatedAnswer.index) {
+        return updatedAnswer;
+      } else {
+        return answer;
+      }
+    });
+    setAnswers(updatedAnswers);
+  }
 
   //me making a function to handle delete. it is then send as a prop
   function handleDeleteQuestion(deletedQuestion) {
     const updatedQuestions = questions.filter((question) => question.id !== deletedQuestion.id);
-    setQuestions(updatedQuestions)
+    setQuestions(updatedQuestions);
   }
-
 
   return (
     <section>
       <h1>Quiz Questions</h1>
       <ul>
         {questions.map((question) => (
-          <QuestionItem key={question.id} question={question} onDeleteQuestion={handleDeleteQuestion} onUpdatedAnswer={handleUpdatedAnswer}/>
+          <QuestionItem key={question.id} question={question} onDeleteQuestion={handleDeleteQuestion} onUpdatedAnswer={handleUpdatedAnswer} />
         ))}
         {/* display QuestionItem components here after fetching */}
         <QuestionForm onAddQuestionSubmitted={handleAddQuestion} />
