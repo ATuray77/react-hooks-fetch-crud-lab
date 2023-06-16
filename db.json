@@ -9,7 +9,7 @@
         "props",
         "state"
       ],
-      "correctIndex": 1
+      "correctIndex": 0
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
         "Webpack",
         "ES6"
       ],
-      "correctIndex": 1
+      "correctIndex": 0
     },
     {
       "id": 5,
@@ -43,6 +43,61 @@
         "destructuring"
       ],
       "correctIndex": 0
+    },
+    {
+      "prompt": "man",
+      "answers": [
+        "man1",
+        "man2",
+        "man3",
+        "man4"
+      ],
+      "correctIndex": "3",
+      "id": 6
+    },
+    {
+      "prompt": "TESTING",
+      "answers": [
+        "TESTING1",
+        "TESTING2",
+        "TESTING3",
+        "TESTING4"
+      ],
+      "correctIndex": "1",
+      "id": 7
+    },
+    {
+      "prompt": "NEW",
+      "answers": [
+        "NEW1",
+        "NEW2",
+        "NEW2",
+        "NEW4"
+      ],
+      "correctIndex": "1",
+      "id": 8
+    },
+    {
+      "prompt": "123",
+      "answers": [
+        "123",
+        "123",
+        "123",
+        "123"
+      ],
+      "correctIndex": 0,
+      "id": 9
+    },
+    {
+      "prompt": "ABDA",
+      "answers": [
+        "ABD",
+        "ABC",
+        "ABD",
+        "DSD"
+      ],
+      "correctIndex": "1",
+      "id": 10
     }
   ]
 }

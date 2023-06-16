@@ -46,7 +46,7 @@ function QuestionForm({onAddQuestionSubmitted}) {
 
   return (
     <section>
-      <h1>New Question</h1>
+      {/* <h1>Add Question</h1> */}
       <form onSubmit={handleSubmit}>
         <label>
           Prompt:

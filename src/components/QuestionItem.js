@@ -1,6 +1,6 @@
 import React from "react";
 
-function QuestionItem({ question, onDeleteQuestion, onUpdatedAnswer }) {
+function QuestionItem({ question, onDeleteQuestion, onUpdatedQuestion }) {
   const { id, prompt, answers, correctIndex } = question;
   console.log(question);
 
@@ -22,7 +22,7 @@ function QuestionItem({ question, onDeleteQuestion, onUpdatedAnswer }) {
       }),
     })
       .then((r) => r.json())
-      .then((updatedAnswer) => onUpdatedAnswer(updatedAnswer));
+      .then((updatedQuestion) => onUpdatedQuestion(updatedQuestion));
   }
 
   //me making the delete button a controlled component(event handler)

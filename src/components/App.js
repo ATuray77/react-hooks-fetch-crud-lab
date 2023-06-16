@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminNavBar from "./AdminNavBar";
 import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
@@ -6,16 +6,23 @@ import QuestionList from "./QuestionList";
 function App() {
   const [page, setPage] = useState("List");
 
-  // //me making a function to handle when new question form is submitted
-  // function handleAddQuestion(newQuestion) {
-  //   setQuestions([...questions, newQuestion]);
-  //   console.log(newQuestion);
-  // }
+  const [questions, setQuestions] = useState([]);
+  //const [answers, setAnswers] = useState([]); //I set this up
+
+  useEffect(() => {
+    fetch("http://localhost:4000/questions")
+      .then((r) => r.json())
+      .then((questions) => setQuestions(questions));
+  }, []);
+  
+   function handleAddQuestion(addedQuestion) {
+     setQuestions([...questions, addedQuestion]);
+   }
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm /> : <QuestionList />}
+      {page === "Form" ? <QuestionForm onAddQuestionSubmitted={handleAddQuestion} /> : <QuestionList questions={questions} setQuestions={setQuestions} />}
     </main>
   );
 }

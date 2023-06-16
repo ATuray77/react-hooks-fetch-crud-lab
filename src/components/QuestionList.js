@@ -2,33 +2,21 @@ import React, { useEffect, useState } from "react";
 import QuestionItem from "./QuestionItem";
 import QuestionForm from "./QuestionForm";
 
-function QuestionList() {
-  const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState([]); //I set this up
-
-  useEffect(() => {
-    fetch("http://localhost:4000/questions")
-      .then((r) => r.json())
-      .then((questions) => setQuestions(questions));
-  }, []);
+function QuestionList({ questions, setQuestions }) {
   //console.log(questions);
 
   //me making a function to handle when new question form is submitted
-  function handleAddQuestion(addedQuestion) {
-    setQuestions([...questions, addedQuestion]);
-    console.log(addedQuestion);
-  }
 
   //me creating a function to handle change of answer: PATCH
-  function handleUpdatedAnswer(updatedAnswer) {
-    const updatedAnswers = answers.map((answer, index) => {
-      if (answer.index === updatedAnswer.index) {
-        return updatedAnswer;
+  function handleUpdatedQuestion(updatedQuestion) {
+    const updatedQuestions = questions.map((question, index) => {
+      if (question.index === updatedQuestion.index) {
+        return updatedQuestion;
       } else {
-        return answer;
+        return question;
       }
     });
-    setAnswers(updatedAnswers);
+    setQuestions(updatedQuestions);
   }
 
   //me making a function to handle delete. it is then send as a prop
@@ -42,10 +30,9 @@ function QuestionList() {
       <h1>Quiz Questions</h1>
       <ul>
         {questions.map((question) => (
-          <QuestionItem key={question.id} question={question} onDeleteQuestion={handleDeleteQuestion} onUpdatedAnswer={handleUpdatedAnswer} />
+          <QuestionItem key={question.id} question={question} onDeleteQuestion={handleDeleteQuestion} onUpdatedQuestion={handleUpdatedQuestion} />
         ))}
         {/* display QuestionItem components here after fetching */}
-        <QuestionForm onAddQuestionSubmitted={handleAddQuestion} />
       </ul>
     </section>
   );
